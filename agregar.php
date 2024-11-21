@@ -42,6 +42,19 @@
             </div>
         </div>
     </div>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $fecha_nacimiento = $_POST['fecha_nacimiento'];
+        $telefono = $_POST['telefono'];
+        $direccion = $_POST['direccion'];
+
+        $conn->query("INSERT INTO pacientes (nombre, apellido, fecha_nacimiento, telefono, direccion) 
+                      VALUES ('$nombre', '$apellido', '$fecha_nacimiento', '$telefono', '$direccion')");
+        header("Location: index.php");
+    }
+    ?>
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
